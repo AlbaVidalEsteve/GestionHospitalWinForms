@@ -37,12 +37,13 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.buttonCitas);
             this.panel1.Controls.Add(this.buttonPersonal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 56);
+            this.panel1.Size = new System.Drawing.Size(1782, 56);
             this.panel1.TabIndex = 0;
             // 
             // buttonCitas
@@ -53,6 +54,7 @@
             this.buttonCitas.TabIndex = 1;
             this.buttonCitas.Text = "Citas";
             this.buttonCitas.UseVisualStyleBackColor = true;
+            this.buttonCitas.Click += new System.EventHandler(this.buttonCitas_Click);
             // 
             // buttonPersonal
             // 
@@ -69,14 +71,14 @@
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 56);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(800, 394);
+            this.panelContainer.Size = new System.Drawing.Size(1782, 782);
             this.panelContainer.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1782, 838);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";

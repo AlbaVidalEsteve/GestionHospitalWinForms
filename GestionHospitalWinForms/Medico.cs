@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionHospital
 {
+    
     public enum eEspecialidades
     {
         Cardiología = 1,
@@ -18,10 +19,20 @@ namespace GestionHospital
     public class Medico : Persona
     {
         public eEspecialidades Especialidad { get; set; }
+        public int NumeroLicencia { get; set; }
+        public int AnosExperiencia { get; set; }
         public List<Paciente> ListaPacientes {  get; set; }
         public Medico(string nombre,eEspecialidades especialidad) : base(nombre)
         {
             Especialidad = especialidad;
+            ListaPacientes = new List<Paciente>();
+        }
+
+        public Medico(string nombre, string apellido, int telefono, string email, eEspecialidades especialidad, int numeroLicencia, int anosExperiencia) : base(nombre, apellido, telefono, email)
+        {
+            Especialidad = especialidad;
+            NumeroLicencia = numeroLicencia;
+            AnosExperiencia = anosExperiencia;
             ListaPacientes = new List<Paciente>();
         }
 

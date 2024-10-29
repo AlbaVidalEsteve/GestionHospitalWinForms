@@ -28,25 +28,25 @@ namespace GestionHospital
             Administrativo administrativo = new Administrativo(nombre);
             ListaPersonas.Add(administrativo);
         }
-        public void AñadirPaciente()
+        public void AñadirPaciente(Paciente paciente)
         {
-            string nombre = GetNombre<Paciente>();
-            Paciente paciente = new Paciente(nombre);
+            //string nombre = GetNombre<Paciente>();
+            //Paciente paciente = new Paciente(nombre);
             ListaPersonas.Add(paciente);
         }
-        public void AñadirMedico()
+        public void AñadirMedico(Medico medico)
         {
-            string nombre = GetNombre<Medico>();
-            Console.WriteLine("---Escoge especialidad---" +
-                "\n [1] Cardiología" +
-                "\n [2] General" +
-                "\n [3] Neumología" +
-                "\n [4] Neurología" +
-                "\n [5] Dermatología" +
-                "\n [6] Pediatría");
-            int opcion = Convert.ToInt32(Console.ReadLine());
-            eEspecialidades especialidad = (eEspecialidades)opcion;
-            Medico medico = new Medico(nombre, especialidad);
+            //string nombre = GetNombre<Medico>();
+            //Console.WriteLine("---Escoge especialidad---" +
+            //    "\n [1] Cardiología" +
+            //    "\n [2] General" +
+            //    "\n [3] Neumología" +
+            //    "\n [4] Neurología" +
+            //    "\n [5] Dermatología" +
+            //    "\n [6] Pediatría");
+            //int opcion = Convert.ToInt32(Console.ReadLine());
+            //eEspecialidades especialidad = (eEspecialidades)opcion;
+            //Medico medico = new Medico(nombre, especialidad);
             ListaPersonas.Add(medico);
         }
         public void AsignarMédico()

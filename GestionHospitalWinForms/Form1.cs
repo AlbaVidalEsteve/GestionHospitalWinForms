@@ -30,22 +30,31 @@ namespace GestionHospitalWinForms
         
         }
 
-        private void MostrarControl(UserControl control)
+        public void MostrarControl(UserControl control)
         {
-            // Limpiar cualquier control previo en el panel
-            panelContainer.Controls.Clear();
+           panelContainer.Controls.Clear();
 
-            // Configurar el UserControl para que ocupe todo el panel
-            control.Dock = DockStyle.Fill;
+           control.Dock = DockStyle.Fill;
 
-            // Agregar el UserControl al panel
             panelContainer.Controls.Add(control);
+        }
+
+        public void RefrescarLista<T>(DataGridView dataGridView)
+        {
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = hospital.ListaPersonas.OfType<T>().ToList();
         }
 
         private void buttonPersonal_Click(object sender, EventArgs e)
         {
             var gestionPersonal = new GestionPersonas();
             MostrarControl(gestionPersonal);
+        }
+
+        private void buttonCitas_Click(object sender, EventArgs e)
+        {
+            var gestionCitas = new GestionCitas();
+            MostrarControl(gestionCitas);
         }
     }
 }
