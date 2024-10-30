@@ -24,9 +24,9 @@ namespace GestionHospital
         }
         public void AñadirAdministrativo()
         {
-            string nombre = GetNombre<Administrativo>();
-            Administrativo administrativo = new Administrativo(nombre);
-            ListaPersonas.Add(administrativo);
+            //string nombre = GetNombre<Administrativo>();
+            //Administrativo administrativo = new Administrativo(nombre,apellido, telefono,email, puesto,departamento);
+            //ListaPersonas.Add(administrativo);
         }
         public void AñadirPaciente(Paciente paciente)
         {
@@ -48,6 +48,123 @@ namespace GestionHospital
             //eEspecialidades especialidad = (eEspecialidades)opcion;
             //Medico medico = new Medico(nombre, especialidad);
             ListaPersonas.Add(medico);
+        }
+
+        public void AnadirDatosEjemplo()
+        {
+            Medico medico1 = new Medico(
+                nombre: "Dr. Juan",
+                apellido: "Pérez",
+                telefono: 123456789,
+                email: "juan.perez@hospital.com",
+                especialidad: eEspecialidades.Cardiología,
+                numeroLicencia: 10293,
+                anosExperiencia: 15
+            );
+            ListaPersonas.Add(medico1);
+
+
+            Medico medico2 = new Medico(nombre: "Dr. Luis",
+                apellido: "Martínez",
+                telefono: 111222333,
+                email: "luis.martinez@hospital.com",
+                especialidad: eEspecialidades.Neumología,
+                numeroLicencia: 20485,
+                anosExperiencia: 8
+            );
+            ListaPersonas.Add(medico2);
+            Medico medico3 = new Medico(
+                nombre: "Dra. Clara",
+                apellido: "Ruiz",
+                telefono: 222333444,
+                email: "clara.ruiz@hospital.com",
+                especialidad: eEspecialidades.Dermatología,
+                numeroLicencia: 37456,
+                anosExperiencia: 12
+            );
+            ListaPersonas.Add(medico3);
+
+            Medico medico4 = new Medico(
+                nombre: "Dr. Alejandro",
+                apellido: "Fernández",
+                telefono: 333444555,
+                email: "alejandro.fernandez@hospital.com",
+                especialidad: eEspecialidades.Neurología,
+                numeroLicencia: 48567,
+                anosExperiencia: 10
+            );
+            ListaPersonas.Add(medico4);
+            Paciente paciente1 = new Paciente(
+                nombre: "Ana",
+                apellido: "García",
+                grupo: "A+",
+                fecha: new DateTime(1990, 5, 15),
+                telefono: 987654321,
+                email: "ana.garcia@correo.com"
+            );
+            ListaPersonas.Add(paciente1);
+            paciente1.MedicoAsignado = medico1;
+            medico1.ListaPacientes.Add(paciente1);
+
+            Paciente paciente2 = new Paciente(
+                nombre: "Carlos",
+                apellido: "López",
+                grupo: "A+",
+                fecha: new DateTime(1985, 3, 22),
+                telefono: 555123456,
+                email: "carlos.lopez@correo.com"
+            );
+            ListaPersonas.Add(paciente2);
+
+            paciente2.MedicoAsignado = medico2;
+            medico2.ListaPacientes.Add(paciente2);
+
+            Paciente paciente3 = new Paciente(
+                nombre: "Juan",
+                apellido: "Pérez",
+                grupo: "B+",
+                fecha: new DateTime(1978, 5, 14),
+                telefono: 555789123,
+                email: "juan.perez@correo.com"
+            );
+            ListaPersonas.Add(paciente3);
+
+            paciente3.MedicoAsignado = medico3;
+            medico3.ListaPacientes.Add(paciente3);
+
+            Paciente paciente4 = new Paciente(
+                nombre: "María",
+                apellido: "Hernández",
+                grupo: "O-",
+                fecha: new DateTime(1992, 7, 18),
+                telefono: 555654321,
+                email: "maria.hernandez@correo.com"
+            );
+            ListaPersonas.Add(paciente4);
+
+            paciente4.MedicoAsignado = medico4;
+            medico4.ListaPacientes.Add(paciente4);
+
+
+            Cita cita1 = new Cita(
+                fecha: new DateTime(2024, 11, 5, 10, 30, 0), // 5 de Noviembre de 2024 a las 10:30 am
+                medico: medico1,
+                paciente: paciente1
+            );
+
+            cita1.Diagnostico = "Revisión general";
+
+            Administrativo admin1 = new Administrativo(
+                nombre: "Laura",
+                apellido: "Gómez",
+                telefono: 555123456,
+                email: "laura.gomez@hospital.com",
+                puesto: "Recepcionista",
+                departamento: "Admisiones"
+            );
+            ListaPersonas.Add(admin1);
+
+
         }
         public void AsignarMédico()
         {

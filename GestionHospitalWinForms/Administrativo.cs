@@ -8,9 +8,13 @@ namespace GestionHospital
 {
     internal class Administrativo : Persona
     {
-        public Administrativo(string nombre) : base(nombre)
+
+        public string Puesto { get; set; }
+        public string Departamento { get; set; }
+        public Administrativo(string nombre, string apellido, int telefono, string email, string puesto, string departamento) : base(nombre, apellido, telefono, email)
         {
-            //Persona administrativo = new Persona(nombre);
+            Puesto = puesto;
+            Departamento = departamento;    
         }
 
         public override string ToString()

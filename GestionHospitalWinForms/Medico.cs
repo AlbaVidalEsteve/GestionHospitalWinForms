@@ -18,18 +18,21 @@ namespace GestionHospital
     }
     public class Medico : Persona
     {
+        public Guid ID { get; private set; }
         public eEspecialidades Especialidad { get; set; }
         public int NumeroLicencia { get; set; }
         public int AnosExperiencia { get; set; }
         public List<Paciente> ListaPacientes {  get; set; }
         public Medico(string nombre,eEspecialidades especialidad) : base(nombre)
         {
+            ID = Guid.NewGuid();
             Especialidad = especialidad;
             ListaPacientes = new List<Paciente>();
         }
 
         public Medico(string nombre, string apellido, int telefono, string email, eEspecialidades especialidad, int numeroLicencia, int anosExperiencia) : base(nombre, apellido, telefono, email)
         {
+            ID = Guid.NewGuid();
             Especialidad = especialidad;
             NumeroLicencia = numeroLicencia;
             AnosExperiencia = anosExperiencia;
@@ -54,9 +57,7 @@ namespace GestionHospital
 
         public override string ToString()
         {
-            return $"Médico: {Nombre}," +
-                $"\n Especialidad: {Especialidad}," +
-                $"\n Pacientes asignados: {ListaPacientes.Count}";
+            return $"Médico: {Nombre} {Apellido} Especialidad: {Especialidad}";
         }
 
     }

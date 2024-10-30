@@ -14,24 +14,28 @@ namespace GestionHospitalWinForms
     public partial class UpdatePaciente : UserControl
     {
         private Hospital hospital;
-        public UpdatePaciente()
+        public UpdatePaciente(Hospital hospital)
         {
             InitializeComponent();
+            this.hospital = hospital;
         }
 
         private void UpdatePaciente_Load(object sender, EventArgs e)
         {
-            
+
             Form1 mainForm = this.ParentForm as Form1;
-            hospital = mainForm?.HospitalInstance;
+            
 
             if (hospital != null)
-            {               
-                hospital.AñadirPaciente(new Paciente("Alba", "Vidal", "0+", new DateTime(1997, 10, 28), 660517673, "vidalba97@gmail.com"));
-                hospital.AñadirPaciente(new Paciente("Joel", "Adorno", "A+", new DateTime(2004, 12, 16), 665435876, "joel@gmail.com"));
-                                
+            {                                  
                 mainForm.RefrescarLista<Paciente>(dataGridViewPacientes);
             }
+
+            //ComboBox Medicos
+            var medicos = hospital.ListaPersonas.OfType<Medico>().ToList();
+            comboBoxMedicos.Items.AddRange(medicos.ToArray());
+            comboBoxMedicos.DisplayMember = "Nombre";
+            comboBoxMedicos.DataSource = medicos;
         }
 
         
