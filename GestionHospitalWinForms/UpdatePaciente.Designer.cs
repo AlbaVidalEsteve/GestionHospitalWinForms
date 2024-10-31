@@ -209,7 +209,7 @@
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(119, 38);
             this.buttonBorrar.TabIndex = 20;
-            this.buttonBorrar.Text = "Borrar Médico";
+            this.buttonBorrar.Text = "Borrar";
             this.buttonBorrar.UseVisualStyleBackColor = false;
             // 
             // labelPacientes

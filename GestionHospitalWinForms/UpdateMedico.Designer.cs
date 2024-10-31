@@ -281,6 +281,7 @@
             this.buttonBorrar.TabIndex = 20;
             this.buttonBorrar.Text = "Borrar";
             this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Visible = false;
             this.buttonBorrar.Click += new System.EventHandler(this.buttonBorrar_Click);
             // 
             // buttonGuardar

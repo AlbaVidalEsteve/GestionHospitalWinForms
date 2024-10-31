@@ -54,13 +54,23 @@ namespace GestionHospitalWinForms
 
         private void buttonBorrar_Click(object sender, EventArgs e)
         {
+            if (dataGridViewMedicos.SelectedRows.Count > 0)
+            {
+                var medicoSeleccionado = dataGridViewMedicos.SelectedRows[0].DataBoundItem as Medico;
+                hospital.borrarMedico(medicoSeleccionado);
+                RefrescarListaMedicos();
+                panelMostrarDatos.Visible=false;    
+                buttonBorrar.Visible=false;
+                buttonGuardar.Visible=false;
 
+            }
         }
 
         private void dataGridViewMedicos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             panelMostrarDatos.Visible = true;
             buttonGuardar.Visible = true;
+            buttonBorrar.Visible = true;
             var medicoSeleccionado = dataGridViewMedicos.SelectedRows[0].DataBoundItem as Medico;
             textBoxNombre.Text = medicoSeleccionado.Nombre;
             textBoxApellido.Text = medicoSeleccionado.Apellido;            

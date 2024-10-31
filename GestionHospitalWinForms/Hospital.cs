@@ -34,22 +34,22 @@ namespace GestionHospital
             //Paciente paciente = new Paciente(nombre);
             ListaPersonas.Add(paciente);
         }
-        public void AñadirMedico(Medico medico)
+
+        public void borrarPaciente(Paciente paciente)
         {
-            //string nombre = GetNombre<Medico>();
-            //Console.WriteLine("---Escoge especialidad---" +
-            //    "\n [1] Cardiología" +
-            //    "\n [2] General" +
-            //    "\n [3] Neumología" +
-            //    "\n [4] Neurología" +
-            //    "\n [5] Dermatología" +
-            //    "\n [6] Pediatría");
-            //int opcion = Convert.ToInt32(Console.ReadLine());
-            //eEspecialidades especialidad = (eEspecialidades)opcion;
-            //Medico medico = new Medico(nombre, especialidad);
-            ListaPersonas.Add(medico);
+            //string nombre = GetNombre<Paciente>();
+            //Paciente paciente = new Paciente(nombre);
+            ListaPersonas.Remove(paciente);
         }
 
+        public void AñadirMedico(Medico medico)
+        {            
+            ListaPersonas.Add(medico);
+        }
+        public void borrarMedico(Medico medico)
+        {            
+            ListaPersonas.Remove(medico);
+        }
         public void AnadirDatosEjemplo()
         {
             Medico medico1 = new Medico(
