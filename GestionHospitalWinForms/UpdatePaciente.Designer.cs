@@ -49,7 +49,7 @@
             this.dataGridViewPacientes = new System.Windows.Forms.DataGridView();
             this.dateTimePickerBirth = new System.Windows.Forms.DateTimePicker();
             this.buttonNuevo = new System.Windows.Forms.Button();
-            this.buttonModificar = new System.Windows.Forms.Button();
+            this.buttonGuardar = new System.Windows.Forms.Button();
             this.panelMostrarDatos = new System.Windows.Forms.Panel();
             this.comboBoxMedicos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacientes)).BeginInit();
@@ -193,7 +193,7 @@
             // 
             this.buttonAñadir.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAñadir.Location = new System.Drawing.Point(123, 313);
+            this.buttonAñadir.Location = new System.Drawing.Point(123, 327);
             this.buttonAñadir.Name = "buttonAñadir";
             this.buttonAñadir.Size = new System.Drawing.Size(90, 38);
             this.buttonAñadir.TabIndex = 19;
@@ -205,12 +205,13 @@
             // 
             this.buttonBorrar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBorrar.Location = new System.Drawing.Point(1055, 325);
+            this.buttonBorrar.Location = new System.Drawing.Point(1055, 339);
             this.buttonBorrar.Name = "buttonBorrar";
             this.buttonBorrar.Size = new System.Drawing.Size(119, 38);
             this.buttonBorrar.TabIndex = 20;
             this.buttonBorrar.Text = "Borrar";
             this.buttonBorrar.UseVisualStyleBackColor = false;
+            this.buttonBorrar.Visible = false;
             // 
             // labelPacientes
             // 
@@ -252,25 +253,26 @@
             // 
             this.buttonNuevo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNuevo.Location = new System.Drawing.Point(27, 313);
+            this.buttonNuevo.Location = new System.Drawing.Point(27, 327);
             this.buttonNuevo.Name = "buttonNuevo";
             this.buttonNuevo.Size = new System.Drawing.Size(90, 38);
             this.buttonNuevo.TabIndex = 26;
-            this.buttonNuevo.Text = "Vaciar";
+            this.buttonNuevo.Text = "Nuevo";
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
-            // buttonModificar
+            // buttonGuardar
             // 
-            this.buttonModificar.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModificar.Location = new System.Drawing.Point(1180, 325);
-            this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(90, 38);
-            this.buttonModificar.TabIndex = 27;
-            this.buttonModificar.Text = "Modificar";
-            this.buttonModificar.UseVisualStyleBackColor = false;
-            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
+            this.buttonGuardar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.Location = new System.Drawing.Point(1180, 339);
+            this.buttonGuardar.Name = "buttonGuardar";
+            this.buttonGuardar.Size = new System.Drawing.Size(90, 38);
+            this.buttonGuardar.TabIndex = 27;
+            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.UseVisualStyleBackColor = false;
+            this.buttonGuardar.Visible = false;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // panelMostrarDatos
             // 
@@ -292,9 +294,9 @@
             this.panelMostrarDatos.Controls.Add(this.labelGrupo);
             this.panelMostrarDatos.Controls.Add(this.textBoxGrupo);
             this.panelMostrarDatos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelMostrarDatos.Location = new System.Drawing.Point(0, 372);
+            this.panelMostrarDatos.Location = new System.Drawing.Point(0, 385);
             this.panelMostrarDatos.Name = "panelMostrarDatos";
-            this.panelMostrarDatos.Size = new System.Drawing.Size(1300, 135);
+            this.panelMostrarDatos.Size = new System.Drawing.Size(1300, 148);
             this.panelMostrarDatos.TabIndex = 28;
             // 
             // comboBoxMedicos
@@ -314,13 +316,13 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Controls.Add(this.panelMostrarDatos);
             this.Controls.Add(this.dataGridViewPacientes);
-            this.Controls.Add(this.buttonModificar);
+            this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.labelPacientes);
             this.Controls.Add(this.buttonNuevo);
             this.Controls.Add(this.buttonAñadir);
             this.Controls.Add(this.buttonBorrar);
             this.Name = "UpdatePaciente";
-            this.Size = new System.Drawing.Size(1300, 507);
+            this.Size = new System.Drawing.Size(1300, 533);
             this.Load += new System.EventHandler(this.UpdatePaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacientes)).EndInit();
             this.panelMostrarDatos.ResumeLayout(false);
@@ -353,7 +355,7 @@
         private System.Windows.Forms.DataGridView dataGridViewPacientes;
         private System.Windows.Forms.DateTimePicker dateTimePickerBirth;
         private System.Windows.Forms.Button buttonNuevo;
-        private System.Windows.Forms.Button buttonModificar;
+        private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Panel panelMostrarDatos;
         private System.Windows.Forms.ComboBox comboBoxMedicos;
     }

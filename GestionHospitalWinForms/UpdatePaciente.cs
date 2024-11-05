@@ -38,8 +38,6 @@ namespace GestionHospitalWinForms
             comboBoxMedicos.DataSource = medicos;
         }
 
-        
-
         private void buttonAñadir_Click(object sender, EventArgs e)
         {
             try
@@ -68,6 +66,12 @@ namespace GestionHospitalWinForms
         private void dataGridViewPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var pacienteSeleccionado = dataGridViewPacientes.SelectedRows[0].DataBoundItem as Paciente;
+            buttonGuardar.Visible = true;
+            buttonBorrar.Visible = true;
+            buttonNuevo.Visible = true;
+            panelMostrarDatos.Visible = true;
+            panelMostrarDatos.Refresh();
+
             textBoxNombre.Text = pacienteSeleccionado.Nombre;
             textBoxApellido.Text = pacienteSeleccionado.Apellido;
             dateTimePickerBirth.Value = pacienteSeleccionado.FechaNacimiento;
@@ -78,18 +82,42 @@ namespace GestionHospitalWinForms
 
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
+            panelMostrarDatos.Visible = true;
+            buttonGuardar.Visible = true;
+            buttonBorrar.Visible = true;
             textBoxNombre.Text = "";
             textBoxApellido.Text = "";
             dateTimePickerBirth.Text = "";
             textBoxTelefono.Text = "";
             textBoxGrupo.Text = "";
-            textBoxEmail.Text = "";
+            textBoxEmail.Text = "";            
         }
 
-        private void buttonModificar_Click(object sender, EventArgs e)
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
         {
             if (dataGridViewPacientes.SelectedRows.Count > 0)
             {
+                // Modificar paciente existente
+                var pacienteSeleccionado = dataGridViewPacientes.SelectedRows[0].DataBoundItem as Paciente;
+                if (pacienteSeleccionado != null)
+                {
+                    ModificarPaciente(pacienteSeleccionado);
+                } else
+                {
+                    // Agregar nuevo`paciente
+                    AgregarNuevoPaciente(pacienteSeleccionado);
+                }
+            }
+            //panelMostrarDatos.Visible = false;
+            buttonGuardar.Visible = false;
+                        
+        }
+
+        private void ModificarPaciente(Paciente paciente)
+        {
+            if (dataGridViewPacientes.SelectedRows.Count > 0)
+            {                
                 var pacienteSeleccionado = dataGridViewPacientes.SelectedRows[0].DataBoundItem as Paciente;
 
                 if (pacienteSeleccionado != null)
@@ -122,6 +150,39 @@ namespace GestionHospitalWinForms
             }
         }
 
+        private void AgregarNuevoPaciente(Paciente paciente)
+        {
+            try
+            {
+                var nombre = textBoxNombre.Text;
+                var apellido = textBoxApellido.Text;
+                var email = textBoxEmail.Text;
+                var grupo = textBoxGrupo.Text;
+                DateTime fecha = dateTimePickerBirth.Value;
 
+                if (int.TryParse(textBoxTelefono.Text, out int telefono))
+                {
+                    var pacienteoNuevo = new Paciente(nombre, apellido, grupo,fecha, telefono, email );
+                    hospital.AñadirPaciente(paciente);
+
+                    MessageBox.Show("Paciente añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RefrescarListaPaciente();
+                }
+                else
+                {
+                    MessageBox.Show("Verifica los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Formato de datos incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RefrescarListaPaciente()
+        {
+            dataGridViewPacientes.DataSource = null;
+            dataGridViewPacientes.DataSource = hospital.ListaPersonas.OfType<Paciente>().ToList();
+        }
     }
 }
